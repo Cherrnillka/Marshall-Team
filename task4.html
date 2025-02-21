@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 4: Работа с формами</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Цвета для светлой и темной темы */
+        .light-theme {
+            background-color: #FFEBEE; /* Светлый красный */
+            color: #D32F2F; /* Темно-красный */
+        }
+
+        .dark-theme {
+            background-color: #3E0A15; /* Очень тёмный бордовый */
+            color: #FFCDD2; /* Светло-розовый */
+        }
+
+        /* Меню */
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            z-index: 100;
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #D32F2F; /* Темно-красный */
+            width: 250px;
+            height: 100%;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            padding-top: 60px;
+        }
+
+        .menu-container.opened {
+            left: 0;
+        }
+
+        .menu-container ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .menu-container li {
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-container li:hover {
+            background-color: #C2185B; /* Розово-красный */
+        }
+
+        .close-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 101;
+            display: none;
+        }
+
+        .menu-container.opened .close-menu {
+            display: block;
+        }
+
+        /* Контент */
+        .content {
+            padding: 40px;
+            margin-left: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #D32F2F; /* Темно-красный */
+            margin-bottom: 20px;
+        }
+
+        h2, h3 {
+            color: #D32F2F; /* Темно-красный */
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: inherit;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: normal;
+            padding-top: 0;
+        }
+
+        /* Переключение темы */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 101;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .light-theme .theme-toggle {
+            color: #D32F2F; /* Темно-красный */
+        }
+
+        .dark-theme .theme-toggle {
+            color: #FFCDD2; /* Светло-розовый */
+        }
+
+        footer {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        .light-theme footer {
+            background-color: #D32F2F; /* Темно-красный */
+            color: white;
+        }
+
+        .dark-theme footer {
+            background-color: #D32F2F; /* Тёмно-вишнёвый */
+            color: #FFCDD2; /* Светло-розовый */
+        }
+
+        .footer span {
+            font-weight: 600;
+        }
+
+        /* Стили для блока с кодом */
+        pre {
+            background-color: #ffe5e5; /* Светлый красный */
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 1rem;
+            color: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dark-theme pre {
+            background-color: #3e0a15; /* Очень тёмный бордовый */
+            color: #ffccd2; /* Светло-розовый */
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .light-theme pre {
+            border: 1px solid #D32F2F; /* Темно-красный */
+        }
+
+        .dark-theme pre {
+            border: 1px solid #C2185B; /* Розово-красный */
+        }
+
+        /* Добавление номеров строк */
+        .line-numbers {
+            counter-reset: line;
+            display: block;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .line-numbers code {
+            display: block;
+        }
+
+        .line-numbers code span {
+            display: block;
+            counter-increment: line;
+            padding-left: 40px;
+        }
+
+        .line-numbers code span::before {
+            content: counter(line);
+            display: inline-block;
+            width: 30px;
+            margin-left: -40px;
+            text-align: right;
+            color: #888;
+            padding-right: 10px;
+        }
+
+    </style>
+</head>
+<body class="light-theme">
+
+    <div class="menu" id="menuButton" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="menu-container" id="menuContainer">
+        <div class="close-menu" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li onclick="goToHome()">Главная</li>
+            <li onclick="goToTask(1)">Задание № 1</li>
+            <li onclick="goToTask(2)">Задание № 2</li>
+            <li onclick="goToTask(3)">Задание № 3</li>
+            <li onclick="goToTask(4)">Задание № 4</li>
+            <li onclick="goToTask(5)">Задание № 5</li>
+            <li onclick="goToTask(6)">Задание № 6</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Задание 4: Работа с формами</h1>
+        <p>В этом задании мы научимся работать с HTML-формами. Мы будем создавать форму для ввода данных и обработки этих данных с помощью JavaScript.</p>
+
+        <h2>Что вам нужно сделать:</h2>
+        <ul>
+            <li>Создать форму с полями для имени и комментария.</li>
+            <li>Добавить кнопку для отправки формы.</li>
+            <li>Обработать данные формы с помощью JavaScript.</li>
+        </ul>
+
+        <h2>Пример кода:</h2>
+        <pre class="line-numbers">
+<code>
+<span>// Создаем форму с полями</span>
+<span>&lt;form id="myForm"&gt;</span>
+<span>&lt;label for="name"&gt;Имя:&lt;/label&gt;</span>
+<span>&lt;input type="text" id="name" name="name" required&gt;</span>
+<span>&lt;label for="comment"&gt;Комментарий:&lt;/label&gt;</span>
+<span>&lt;textarea id="comment" name="comment" required&gt;&lt;/textarea&gt;</span>
+<span>&lt;button type="submit"&gt;Отправить&lt;/button&gt;</span>
+<span>&lt;/form&gt;</span>
+<span></span>
+<span>// Обработка данных формы с JavaScript</span>
+<span>document.getElementById('myForm').addEventListener('submit', function(event) {</span>
+<span>    event.preventDefault();</span>
+<span>    const name = document.getElementById('name').value;</span>
+<span>    const comment = document.getElementById('comment').value;</span>
+<span>    alert(`Спасибо за ваш комментарий, ${name}!\nКомментарий: ${comment}`);</span>
+<span>});</span>
+</code>
+        </pre>
+
+        <h2>Что дальше?</h2>
+        <p>Теперь попробуйте добавить дополнительные поля или настроить обработку данных в форме.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</p>
+    </footer>
+
+    <script>
+        let isMenuOpen = false;
+        let isDarkTheme = localStorage.getItem('theme') === 'dark';
+
+        if (isDarkTheme) {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-sun');
+            document.getElementById('themeToggle').children[0].classList.add('fa-moon');
+        } else {
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-moon');
+            document.getElementById('themeToggle').children[0].classList.add('fa-sun');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menuContainer');
+            menu.classList.toggle('opened');
+            isMenuOpen = !isMenuOpen;
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeToggle').children[0];
+
+            if (isDarkTheme) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+
+            isDarkTheme = !isDarkTheme;
+        }
+
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+
+        function goToTask(taskId) {
+            window.location.href = "task" + taskId + ".html";
+        }
+    </script>
+
+</body>
+</html>

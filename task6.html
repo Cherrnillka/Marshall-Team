@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 6: Анимации с CSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .light-theme {
+            background-color: #f4e1a1; /* Светлый песочный фон */
+            color: #e2a400; /* Тёплый золотой для текста */
+        }
+
+        .dark-theme {
+            background-color: #212121;
+            color: #ffd700; /* Золотой для тёмной темы */
+        }
+
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            z-index: 100;
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #e2a400; /* Золотисто-жёлтый для меню */
+            width: 250px;
+            height: 100%;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            padding-top: 60px;
+        }
+
+        .menu-container.opened {
+            left: 0;
+        }
+
+        .menu-container ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .menu-container li {
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-container li:hover {
+            background-color: #c57f2b; /* Тёмно-жёлтая подсветка */
+        }
+
+        .close-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 101;
+            display: none;
+        }
+
+        .menu-container.opened .close-menu {
+            display: block;
+        }
+
+        .content {
+            padding: 40px;
+            margin-left: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #e2a400;
+            margin-bottom: 20px;
+        }
+
+        h2, h3 {
+            color: #e2a400;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: inherit;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 101;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .light-theme .theme-toggle {
+            color: #e2a400; /* Золотой для светлой темы */
+        }
+
+        .dark-theme .theme-toggle {
+            color: #ffd700; /* Золотой для тёмной темы */
+        }
+
+        /* Анимации */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #e2a400;
+            animation: move 5s infinite alternate ease-in-out;
+            margin-top: 20px;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(200px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Плавный переход для изменений стилей */
+        .transition-box {
+            width: 100px;
+            height: 100px;
+            background-color: #e2a400;
+            transition: transform 0.5s ease, background-color 0.5s ease;
+        }
+
+        .transition-box:hover {
+            background-color: #ffd700;
+            transform: translateY(100px);
+        }
+
+        /* Футер */
+        .footer {
+            background-color: #e2a400;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .light-theme .footer {
+            background-color: #ffd700; /* Золотой фон для светлой темы */
+        }
+
+        .dark-theme .footer {
+            background-color: #212121; /* Чёрный фон для тёмной темы */
+            color: #ffd700; /* Золотой для текста в тёмной теме */
+        }
+
+        .footer span {
+            font-weight: 600;
+        }
+
+        /* Код и номера строк */
+        pre {
+            background-color: #f4e1a1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 1rem;
+            color: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dark-theme pre {
+            background-color: #424242;
+            color: #ffd700;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .light-theme pre {
+            border: 1px solid #ffd700;
+        }
+
+        .dark-theme pre {
+            border: 1px solid #e2a400;
+        }
+
+        /* Добавление номеров строк */
+        .line-numbers {
+            counter-reset: line;
+            display: block;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .line-numbers code {
+            display: block;
+        }
+
+        .line-numbers code span {
+            display: block;
+            counter-increment: line;
+            padding-left: 40px;
+        }
+
+        .line-numbers code span::before {
+            content: counter(line);
+            display: inline-block;
+            width: 30px;
+            margin-left: -40px;
+            text-align: right;
+            color: #888;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body class="light-theme">
+
+    <div class="menu" id="menuButton" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="menu-container" id="menuContainer">
+        <div class="close-menu" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li onclick="goToHome()">Главная</li>
+            <li onclick="goToTask(1)">Задание № 1</li>
+            <li onclick="goToTask(2)">Задание № 2</li>
+            <li onclick="goToTask(3)">Задание № 3</li>
+            <li onclick="goToTask(4)">Задание № 4</li>
+            <li onclick="goToTask(5)">Задание № 5</li>
+            <li onclick="goToTask(6)">Задание № 6</li>
+        </ul>
+    </div>
+
+    <div class="content" id="mainContent">
+        <h1>Задание 6: Анимации с CSS</h1>
+        <p>В этом задании мы научимся использовать анимации CSS для создания динамичных эффектов на веб-страницах.</p>
+
+        <h2>Что вам нужно сделать:</h2>
+        <ul>
+            <li>Создать анимацию для перемещения элемента.</li>
+            <li>Настроить плавный переход для изменения стилей.</li>
+        </ul>
+
+        <h2>Пример кода:</h2>
+        <pre class="line-numbers">
+<code>
+<span>&lt;div class="box"&gt;&lt;/div&gt;</span>
+<span>&lt;div class="transition-box"&gt;&lt;/div&gt;</span>
+<span>&lt;style&gt;</span>
+<span>  .box {</span>
+<span>    animation: move 5s infinite alternate ease-in-out;</span>
+<span>  }</span>
+<span>  @keyframes move {</span>
+<span>    0% { transform: translateX(0); }</span>
+<span>    50% { transform: translateX(200px); }</span>
+<span>    100% { transform: translateX(0); }</span>
+<span>  }</span>
+<span>&lt;/style&gt;</span>
+</code>
+        </pre>
+
+        <h2>Что дальше?</h2>
+        <p>Попробуйте изменить параметры анимации или создать свои собственные анимации для других элементов страницы!</p>
+
+        <div class="box"></div>
+        <div class="transition-box"></div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</span></p>
+    </div>
+
+    <script>
+        let isMenuOpen = false;
+        let isDarkTheme = localStorage.getItem('theme') === 'dark';
+
+        if (isDarkTheme) {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-sun');
+            document.getElementById('themeToggle').children[0].classList.add('fa-moon');
+        } else {
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-moon');
+            document.getElementById('themeToggle').children[0].classList.add('fa-sun');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menuContainer');
+            menu.classList.toggle('opened');
+            isMenuOpen = !isMenuOpen;
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeToggle').children[0];
+
+            if (isDarkTheme) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+
+            isDarkTheme = !isDarkTheme;
+        }
+
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+
+        function goToTask(taskId) {
+            window.location.href = "task" + taskId + ".html";
+        }
+    </script>
+
+</body>
+</html>

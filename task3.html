@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 3: Основы JavaScript</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .light-theme {
+            background-color: #e3f2fd;
+            color: #0277bd;
+        }
+
+        .dark-theme {
+            background-color: #1c2331;
+            color: #90caf9;
+        }
+
+        .menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            z-index: 100;
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #0277bd;
+            width: 250px;
+            height: 100%;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            padding-top: 60px;
+        }
+
+        .menu-container.opened {
+            left: 0;
+        }
+
+        .menu-container ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .menu-container li {
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-container li:hover {
+            background-color: #01579b;
+        }
+
+        .close-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 101;
+            display: none;
+        }
+
+        .menu-container.opened .close-menu {
+            display: block;
+        }
+
+        .content {
+            padding: 40px;
+            margin-left: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #0277bd;
+            margin-bottom: 20px;
+        }
+
+        h2, h3 {
+            color: #0277bd;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: inherit;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: normal;
+            padding-top: 0;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 101;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .light-theme .theme-toggle {
+            color: #0277bd;
+        }
+
+        .dark-theme .theme-toggle {
+            color: #90caf9;
+        }
+
+        .footer span {
+            font-weight: 600;
+        }
+
+        /* Код и номера строк */
+        pre {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 1rem;
+            color: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dark-theme pre {
+            background-color: #1c2331;
+            color: #90caf9;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .light-theme pre {
+            border: 1px solid #0277bd;
+        }
+
+        .dark-theme pre {
+            border: 1px solid #01579b;
+        }
+
+        /* Добавление номеров строк */
+        .line-numbers {
+            counter-reset: line;
+            display: block;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .line-numbers code {
+            display: block;
+        }
+
+        .line-numbers code span {
+            display: block;
+            counter-increment: line;
+            padding-left: 40px;
+        }
+
+        .line-numbers code span::before {
+            content: counter(line);
+            display: inline-block;
+            width: 30px;
+            margin-left: -40px;
+            text-align: right;
+            color: #888;
+            padding-right: 10px;
+        }
+
+    </style>
+</head>
+<body class="light-theme">
+
+    <div class="menu" id="menuButton" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="menu-container" id="menuContainer">
+        <div class="close-menu" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li onclick="goToHome()">Главная</li>
+            <li onclick="goToTask(1)">Задание № 1</li>
+            <li onclick="goToTask(2)">Задание № 2</li>
+            <li onclick="goToTask(3)">Задание № 3</li>
+            <li onclick="goToTask(4)">Задание № 4</li>
+            <li onclick="goToTask(5)">Задание № 5</li>
+            <li onclick="goToTask(6)">Задание № 6</li>
+        </ul>
+    </div>
+
+    <div class="content" id="mainContent">
+        <h1>Задание 3: Основы JavaScript</h1>
+        <p>В этом задании мы познакомимся с основами JavaScript. Мы научимся создавать переменные, работать с функциями и событиями.</p>
+
+        <h2>Что вам нужно сделать:</h2>
+        <ul>
+            <li>Создать переменную и вывести её значение в консоль.</li>
+            <li>Научиться использовать простые функции для выполнения действий.</li>
+            <li>Создать кнопку, которая при нажатии выводит сообщение.</li>
+        </ul>
+
+        <h2>Пример кода:</h2>
+        <pre class="line-numbers">
+<code>
+<span>// Создаем переменную</span>
+<span>let greeting = "Привет, мир!";</span>
+<span></span>
+<span>// Выводим в консоль</span>
+<span>console.log(greeting);</span>
+<span></span>
+<span>// Функция для вывода сообщения</span>
+<span>function showMessage() {</span>
+<span>    alert("Привет, это ваше первое событие в JavaScript!");</span>
+<span>}</span>
+</code>
+        </pre>
+
+        <h2>Что дальше?</h2>
+        <p>После выполнения задания попробуйте добавить больше функций и событий, чтобы сделать вашу страницу более интерактивной!</p>
+    </div>
+
+    <footer>
+    <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</span></p>
+    </footer>
+
+       <style>
+          /* Фон и выравнивание футера */
+            footer {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+       }
+
+       /* Светлая тема */
+       .light-theme footer {
+           background-color: #0277bd; /* Синий для светлой темы */
+           color: white;
+       }
+
+       /* Темная тема */
+       .dark-theme footer {
+           background-color: #374562; /* Синий для темной темы */
+           color: #90caf9; /* Светлый текст для темной темы */
+       }
+
+       /* Стиль для текста футера */
+       .footer span {
+           font-weight: 600;
+       }
+    </style>
+
+    <script>
+        let isMenuOpen = false;
+        let isDarkTheme = localStorage.getItem('theme') === 'dark';
+
+        if (isDarkTheme) {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-sun');
+            document.getElementById('themeToggle').children[0].classList.add('fa-moon');
+        } else {
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-moon');
+            document.getElementById('themeToggle').children[0].classList.add('fa-sun');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menuContainer');
+            menu.classList.toggle('opened');
+            isMenuOpen = !isMenuOpen;
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeToggle').children[0];
+
+            if (isDarkTheme) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+
+            isDarkTheme = !isDarkTheme;
+        }
+
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+
+        function goToTask(taskId) {
+            window.location.href = "task" + taskId + ".html";
+        }
+    </script>
+
+</body>
+</html>
