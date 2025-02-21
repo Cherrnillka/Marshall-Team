@@ -15,19 +15,20 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden; /* Убираем горизонтальную прокрутку */
         }
 
+        /* Цвета для светлой и темной темы */
         .light-theme {
-            background-color: #FFEBEE;
-            color: #D32F2F;
+            background-color: #FFEBEE; /* Светлый красный */
+            color: #D32F2F; /* Темно-красный */
         }
 
         .dark-theme {
-            background-color: #3E0A15;
-            color: #FFCDD2;
+            background-color: #3E0A15; /* Очень тёмный бордовый */
+            color: #FFCDD2; /* Светло-розовый */
         }
 
+        /* Меню */
         .menu {
             position: fixed;
             top: 20px;
@@ -43,14 +44,13 @@
             position: fixed;
             top: 0;
             left: -250px;
-            background-color: #D32F2F;
+            background-color: #D32F2F; /* Темно-красный */
             width: 250px;
             height: 100%;
             transition: left 0.3s ease;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
             z-index: 100;
             padding-top: 60px;
-            overflow-x: hidden; /* Убираем прокрутку по горизонтали */
         }
 
         .menu-container.opened {
@@ -71,7 +71,7 @@
         }
 
         .menu-container li:hover {
-            background-color: #C2185B;
+            background-color: #C2185B; /* Розово-красный */
         }
 
         .close-menu {
@@ -89,24 +89,24 @@
             display: block;
         }
 
+        /* Контент */
         .content {
             padding: 40px;
+            margin-left: 0;
+            max-width: 1100px;
             margin: 0 auto;
-            width: 100%;
-            max-width: 100%;
             text-align: center;
             flex-grow: 1;
-            overflow-x: hidden; /* Убираем горизонтальную прокрутку */
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #D32F2F;
+            color: #D32F2F; /* Темно-красный */
             margin-bottom: 20px;
         }
 
         h2, h3 {
-            color: #D32F2F;
+            color: #D32F2F; /* Темно-красный */
             margin-bottom: 15px;
         }
 
@@ -122,6 +122,7 @@
             padding-top: 0;
         }
 
+        /* Переключение темы */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -134,11 +135,11 @@
         }
 
         .light-theme .theme-toggle {
-            color: #D32F2F;
+            color: #D32F2F; /* Темно-красный */
         }
 
         .dark-theme .theme-toggle {
-            color: #FFCDD2;
+            color: #FFCDD2; /* Светло-розовый */
         }
 
         footer {
@@ -148,55 +149,25 @@
             font-size: 0.9rem;
             transition: background-color 0.3s ease, color 0.3s ease;
             position: relative;
-            box-sizing: border-box;
         }
 
-        /* Светлая тема */
         .light-theme footer {
-            background-color: #D32F2F;
+            background-color: #D32F2F; /* Темно-красный */
             color: white;
         }
 
-        /* Темная тема */
         .dark-theme footer {
-            background-color: #D32F2F;
-            color: #FFCDD2;
+            background-color: #D32F2F; /* Тёмно-вишнёвый */
+            color: #FFCDD2; /* Светло-розовый */
         }
 
         .footer span {
             font-weight: 600;
         }
 
-        /* Адаптивный дизайн для мобильных устройств */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem; /* Уменьшаем размер заголовка */
-            }
-
-            h2, h3 {
-                font-size: 1.5rem; /* Уменьшаем размер подзаголовков */
-            }
-
-            p {
-                font-size: 1rem; /* Уменьшаем размер текста */
-            }
-
-            .menu-container {
-                width: 100%; /* На мобильных устройствах меню будет растягиваться на всю ширину */
-            }
-
-            .theme-toggle {
-                font-size: 24px; /* Уменьшаем размер иконки */
-            }
-
-            footer {
-                font-size: 0.8rem; /* Уменьшаем размер шрифта футера */
-            }
-        }
-
-        /* Код и номера строк */
+        /* Стили для блока с кодом */
         pre {
-            background-color: #ffe5e5;
+            background-color: #ffe5e5; /* Светлый красный */
             padding: 20px;
             border-radius: 8px;
             overflow-x: auto;
@@ -216,16 +187,20 @@
         }
 
         .dark-theme pre {
-            background-color: #3e0a15;
-            color: #ffccd2;
+            background-color: #3e0a15; /* Очень тёмный бордовый */
+            color: #ffccd2; /* Светло-розовый */
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
         }
 
         .light-theme pre {
-            border: 1px solid #D32F2F;
+            border: 1px solid #D32F2F; /* Темно-красный */
         }
 
         .dark-theme pre {
-            border: 1px solid #C2185B;
+            border: 1px solid #C2185B; /* Розово-красный */
         }
 
         /* Добавление номеров строк */
@@ -255,6 +230,7 @@
             color: #888;
             padding-right: 10px;
         }
+
     </style>
 </head>
 <body class="light-theme">
@@ -282,7 +258,7 @@
         </ul>
     </div>
 
-    <div class="content" id="mainContent">
+    <div class="content">
         <h1>Задание 4: Работа с формами</h1>
         <p>В этом задании мы научимся работать с HTML-формами. Мы будем создавать форму для ввода данных и обработки этих данных с помощью JavaScript.</p>
 
@@ -297,13 +273,13 @@
         <pre class="line-numbers">
 <code>
 <span>// Создаем форму с полями</span>
-<span>form id="myForm"</span>
-<span>label for="name"Имя:/label</span>
-<span>input type="text" id="name" name="name" required</span>
-<span>label for="comment"Комментарий:/label</span>
-<span>textarea id="comment" name="comment" required/textarea</span>
-<span>button type="submit"Отправить/button</span>
-<span>/form</span>
+<span>&lt;form id="myForm"&gt;</span>
+<span>&lt;label for="name"&gt;Имя:&lt;/label&gt;</span>
+<span>&lt;input type="text" id="name" name="name" required&gt;</span>
+<span>&lt;label for="comment"&gt;Комментарий:&lt;/label&gt;</span>
+<span>&lt;textarea id="comment" name="comment" required&gt;&lt;/textarea&gt;</span>
+<span>&lt;button type="submit"&gt;Отправить&lt;/button&gt;</span>
+<span>&lt;/form&gt;</span>
 <span></span>
 <span>// Обработка данных формы с JavaScript</span>
 <span>document.getElementById('myForm').addEventListener('submit', function(event) {</span>
@@ -320,7 +296,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</span></p>
+        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</p>
     </footer>
 
     <script>
@@ -377,3 +353,4 @@
 
 </body>
 </html>
+
