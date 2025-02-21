@@ -142,7 +142,6 @@
             font-weight: 600;
         }
 
-        /* Код и номера строк */
         pre {
             background-color: #ffe5e5;
             padding: 20px;
@@ -180,7 +179,6 @@
             border: 1px solid #C2185B;
         }
 
-        /* Добавление номеров строк */
         .line-numbers {
             counter-reset: line;
             display: block;
@@ -208,6 +206,74 @@
             padding-right: 10px;
         }
 
+        /* Адаптивные стили */
+        @media (max-width: 768px) {
+            .menu-container {
+                width: 200px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2, h3 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .theme-toggle {
+                font-size: 25px;
+            }
+
+            .menu {
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-container {
+                width: 150px;
+            }
+
+            .menu-container li {
+                padding: 10px;
+            }
+
+            .menu-container li:hover {
+                background-color: #C2185B;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2, h3 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .theme-toggle {
+                font-size: 22px;
+            }
+
+            .menu {
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body class="light-theme">
@@ -275,8 +341,7 @@
     <footer>
         <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</p>
     </footer>
-
-       <style>
+    <style>
           /* Фон и выравнивание футера */
             footer {
             width: 100%;
@@ -296,7 +361,7 @@
        /* Темная тема */
        .dark-theme footer {
            background-color: #D32F2F; /* Синий для темной темы */
-           color: #ffccd2; /* Светлый текст для темной темы */
+           color: #FFCDD2; /* Светлый текст для темной темы */
        }
 
        /* Стиль для текста футера */
