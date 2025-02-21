@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .light-theme {
@@ -90,7 +91,7 @@
         .content {
             padding: 40px;
             margin-left: 0;
-            max-width: 1100px;
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
             flex-grow: 1;
@@ -140,6 +141,33 @@
 
         .footer span {
             font-weight: 600;
+        }
+
+        /* Адаптивный дизайн для мобильных устройств */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem; /* Уменьшаем размер заголовка */
+            }
+
+            h2, h3 {
+                font-size: 1.5rem; /* Уменьшаем размер подзаголовков */
+            }
+
+            p {
+                font-size: 1rem; /* Уменьшаем размер текста */
+            }
+
+            .menu-container {
+                width: 200px; /* Уменьшаем ширину меню на мобильных устройствах */
+            }
+
+            .theme-toggle {
+                font-size: 24px; /* Уменьшаем размер иконки */
+            }
+
+            footer {
+                font-size: 0.8rem; /* Уменьшаем размер шрифта футера */
+            }
         }
 
         /* Код и номера строк */
@@ -285,6 +313,7 @@
             font-size: 0.9rem;
             transition: background-color 0.3s ease, color 0.3s ease;
             position: relative;
+            box-sizing: border-box;
        }
 
        /* Светлая тема */
