@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -19,13 +19,13 @@
 
         /* Цвета для светлой и темной темы */
         .light-theme {
-            background-color: #FFEBEE; /* Светлый красный */
-            color: #D32F2F; /* Темно-красный */
+            background-color: #FFEBEE; /* Светлый фон */
+            color: #D32F2F; /* Темный текст */
         }
 
         .dark-theme {
-            background-color: #3E0A15; /* Очень тёмный бордовый */
-            color: #FFCDD2; /* Светло-розовый */
+            background-color: #3E0A15; /* Темный фон */
+            color: #FFCDD2; /* Светлый текст */
         }
 
         /* Меню */
@@ -44,7 +44,7 @@
             position: fixed;
             top: 0;
             left: -250px;
-            background-color: #D32F2F; /* Темно-красный */
+            background-color: #D32F2F; /* Меню с красным фоном */
             width: 250px;
             height: 100%;
             transition: left 0.3s ease;
@@ -71,7 +71,7 @@
         }
 
         .menu-container li:hover {
-            background-color: #C2185B; /* Розово-красный */
+            background-color: #C2185B; /* Темно-розовый */
         }
 
         .close-menu {
@@ -101,12 +101,12 @@
 
         h1 {
             font-size: 2.5rem;
-            color: #D32F2F; /* Темно-красный */
+            color: #D32F2F; /* Цвет заголовка */
             margin-bottom: 20px;
         }
 
         h2, h3 {
-            color: #D32F2F; /* Темно-красный */
+            color: #D32F2F;
             margin-bottom: 15px;
         }
 
@@ -118,8 +118,6 @@
             max-width: 90%;
             margin-left: auto;
             margin-right: auto;
-            white-space: normal;
-            padding-top: 0;
         }
 
         /* Переключение темы */
@@ -135,11 +133,11 @@
         }
 
         .light-theme .theme-toggle {
-            color: #D32F2F; /* Темно-красный */
+            color: #D32F2F; /* Цвет для светлой темы */
         }
 
         .dark-theme .theme-toggle {
-            color: #FFCDD2; /* Светло-розовый */
+            color: #FFCDD2; /* Цвет для темной темы */
         }
 
         footer {
@@ -147,18 +145,17 @@
             padding: 20px 0;
             text-align: center;
             font-size: 0.9rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
             position: relative;
         }
 
         .light-theme footer {
-            background-color: #D32F2F; /* Темно-красный */
+            background-color: #D32F2F;
             color: white;
         }
 
         .dark-theme footer {
-            background-color: #D32F2F; /* Тёмно-вишнёвый */
-            color: #FFCDD2; /* Светло-розовый */
+            background-color: #D32F2F;
+            color: #FFCDD2;
         }
 
         .footer span {
@@ -167,7 +164,7 @@
 
         /* Стили для блока с кодом */
         pre {
-            background-color: #ffe5e5; /* Светлый красный */
+            background-color: #ffe5e5;
             padding: 20px;
             border-radius: 8px;
             overflow-x: auto;
@@ -187,23 +184,15 @@
         }
 
         .dark-theme pre {
-            background-color: #3e0a15; /* Очень тёмный бордовый */
-            color: #ffccd2; /* Светло-розовый */
+            background-color: #4E0B16; /* Утемненный фон окна с кодом для темной темы */
+            color: #FFCDD2; /* Светлый текст */
         }
 
         code {
             font-family: 'Courier New', monospace;
         }
 
-        .light-theme pre {
-            border: 1px solid #D32F2F; /* Темно-красный */
-        }
-
-        .dark-theme pre {
-            border: 1px solid #C2185B; /* Розово-красный */
-        }
-
-        /* Добавление номеров строк */
+        /* Номера строк */
         .line-numbers {
             counter-reset: line;
             display: block;
@@ -219,6 +208,7 @@
             display: block;
             counter-increment: line;
             padding-left: 40px;
+            font-family: "Courier New", monospace;
         }
 
         .line-numbers code span::before {
@@ -229,6 +219,7 @@
             text-align: right;
             color: #888;
             padding-right: 10px;
+            font-family: "Consolas", monospace; /* Шрифт для номеров строк */
         }
 
     </style>
@@ -296,7 +287,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</p>
+        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</span></p>
     </footer>
 
     <script>
