@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 3: Основы JavaScript</title>
+    <title>Задание 4: Работа с формами</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
@@ -18,13 +18,13 @@
         }
 
         .light-theme {
-            background-color: #e3f2fd;
-            color: #0277bd;
+            background-color: #FFEBEE;
+            color: #D32F2F;
         }
 
         .dark-theme {
-            background-color: #1c2331;
-            color: #90caf9;
+            background-color: #3E0A15;
+            color: #FFCDD2;
         }
 
         .menu {
@@ -42,7 +42,7 @@
             position: fixed;
             top: 0;
             left: -250px;
-            background-color: #0277bd;
+            background-color: #D32F2F;
             width: 250px;
             height: 100%;
             transition: left 0.3s ease;
@@ -69,7 +69,7 @@
         }
 
         .menu-container li:hover {
-            background-color: #01579b;
+            background-color: #C2185B;
         }
 
         .close-menu {
@@ -98,12 +98,12 @@
 
         h1 {
             font-size: 2.5rem;
-            color: #0277bd;
+            color: #D32F2F;
             margin-bottom: 20px;
         }
 
         h2, h3 {
-            color: #0277bd;
+            color: #D32F2F;
             margin-bottom: 15px;
         }
 
@@ -131,11 +131,11 @@
         }
 
         .light-theme .theme-toggle {
-            color: #0277bd;
+            color: #D32F2F;
         }
 
         .dark-theme .theme-toggle {
-            color: #90caf9;
+            color: #FFCDD2;
         }
 
         .footer span {
@@ -164,8 +164,8 @@
         }
 
         .dark-theme pre {
-            background-color: #1c2331;
-            color: #90caf9;
+            background-color: #3e0a15;
+            color: #ffccd2;
         }
 
         code {
@@ -173,11 +173,11 @@
         }
 
         .light-theme pre {
-            border: 1px solid #0277bd;
+            border: 1px solid #D32F2F;
         }
 
         .dark-theme pre {
-            border: 1px solid #01579b;
+            border: 1px solid #C2185B;
         }
 
         /* Добавление номеров строк */
@@ -236,34 +236,40 @@
     </div>
 
     <div class="content" id="mainContent">
-        <h1>Задание 3: Основы JavaScript</h1>
-        <p>В этом задании мы познакомимся с основами JavaScript. Мы научимся создавать переменные, работать с функциями и событиями.</p>
+        <h1>Задание 4: Работа с формами</h1>
+        <p>В этом задании мы научимся работать с HTML-формами. Мы будем создавать форму для ввода данных и обработки этих данных с помощью JavaScript.</p>
 
         <h2>Что вам нужно сделать:</h2>
         <ul>
-            <li>Создать переменную и вывести её значение в консоль.</li>
-            <li>Научиться использовать простые функции для выполнения действий.</li>
-            <li>Создать кнопку, которая при нажатии выводит сообщение.</li>
+            <li>Создать форму с полями для имени и комментария.</li>
+            <li>Добавить кнопку для отправки формы.</li>
+            <li>Обработать данные формы с помощью JavaScript.</li>
         </ul>
 
         <h2>Пример кода:</h2>
         <pre class="line-numbers">
 <code>
-<span>// Создаем переменную</span>
-<span>let greeting = "Привет, мир!";</span>
+<span>// Создаем форму с полями</span>
+<span>&lt;form id="myForm"&gt;</span>
+<span>&lt;label for="name"&gt;Имя:&lt;/label&gt;</span>
+<span>&lt;input type="text" id="name" name="name" required&gt;</span>
+<span>&lt;label for="comment"&gt;Комментарий:&lt;/label&gt;</span>
+<span>&lt;textarea id="comment" name="comment" required&gt;&lt;/textarea&gt;</span>
+<span>&lt;button type="submit"&gt;Отправить&lt;/button&gt;</span>
+<span>&lt;/form&gt;</span>
 <span></span>
-<span>// Выводим в консоль</span>
-<span>console.log(greeting);</span>
-<span></span>
-<span>// Функция для вывода сообщения</span>
-<span>function showMessage() {</span>
-<span>    alert("Привет, это ваше первое событие в JavaScript!");</span>
-<span>}</span>
+<span>// Обработка данных формы с JavaScript</span>
+<span>document.getElementById('myForm').addEventListener('submit', function(event) {</span>
+<span>    event.preventDefault();</span>
+<span>    const name = document.getElementById('name').value;</span>
+<span>    const comment = document.getElementById('comment').value;</span>
+<span>    alert(`Спасибо за ваш комментарий, ${name}!\nКомментарий: ${comment}`);</span>
+<span>});</span>
 </code>
         </pre>
 
         <h2>Что дальше?</h2>
-        <p>После выполнения задания попробуйте добавить больше функций и событий, чтобы сделать вашу страницу более интерактивной!</p>
+        <p>Теперь попробуйте добавить дополнительные поля или настроить обработку данных в форме.</p>
     </div>
 
     <footer>
@@ -283,14 +289,14 @@
 
        /* Светлая тема */
        .light-theme footer {
-           background-color: #0277bd; /* Синий для светлой темы */
+           background-color: #D32F2F; /* Синий для светлой темы */
            color: white;
        }
 
        /* Темная тема */
        .dark-theme footer {
-           background-color: #374562; /* Синий для темной темы */
-           color: #90caf9; /* Светлый текст для темной темы */
+           background-color: #D32F2F; /* Синий для темной темы */
+           color: #FFCDD2; /* Светлый текст для темной темы */
        }
 
        /* Стиль для текста футера */
@@ -353,5 +359,3 @@
 
 </body>
 </html>
-
-
