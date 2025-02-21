@@ -11,10 +11,10 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .light-theme {
@@ -116,7 +116,6 @@
             margin-left: auto;
             margin-right: auto;
             white-space: normal;
-            padding-top: 0;
         }
 
         .theme-toggle {
@@ -136,10 +135,6 @@
 
         .dark-theme .theme-toggle {
             color: #FFCDD2;
-        }
-        
-        .footer span {
-            font-weight: 600;
         }
 
         pre {
@@ -165,18 +160,6 @@
         .dark-theme pre {
             background-color: #3e0a15;
             color: #ffccd2;
-        }
-
-        code {
-            font-family: 'Courier New', monospace;
-        }
-
-        .light-theme pre {
-            border: 1px solid #D32F2F;
-        }
-
-        .dark-theme pre {
-            border: 1px solid #C2185B;
         }
 
         .line-numbers {
@@ -206,7 +189,6 @@
             padding-right: 10px;
         }
 
-        /* Адаптивные стили */
         @media (max-width: 768px) {
             .menu-container {
                 width: 200px;
@@ -339,36 +321,8 @@
     </div>
 
     <footer>
-        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</p>
+        <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</span></p>
     </footer>
-    <style>
-          /* Фон и выравнивание футера */
-            footer {
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            position: relative;
-       }
-
-       /* Светлая тема */
-       .light-theme footer {
-           background-color: #D32F2F; /* Синий для светлой темы */
-           color: white;
-       }
-
-       /* Темная тема */
-       .dark-theme footer {
-           background-color: #D32F2F; /* Синий для темной темы */
-           color: #FFCDD2; /* Светлый текст для темной темы */
-       }
-
-       /* Стиль для текста футера */
-       .footer span {
-           font-weight: 600;
-       }
-    </style>
 
     <script>
         let isMenuOpen = false;
@@ -421,6 +375,5 @@
             window.location.href = "task" + taskId + ".html";
         }
     </script>
-
 </body>
 </html>
