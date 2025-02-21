@@ -30,9 +30,9 @@
 
         .menu {
             position: fixed;
-            top: 5vw;
-            left: 5vw;
-            font-size: 5vw;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
             cursor: pointer;
             color: inherit;
             transition: color 0.3s ease;
@@ -42,14 +42,14 @@
         .menu-container {
             position: fixed;
             top: 0;
-            left: -80vw;
+            left: -250px;
             background-color: #D32F2F;
-            width: 80vw;
+            width: 250px;
             height: 100%;
             transition: left 0.3s ease;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
             z-index: 100;
-            padding-top: 10vw;
+            padding-top: 60px;
         }
 
         .menu-container.opened {
@@ -63,7 +63,7 @@
         }
 
         .menu-container li {
-            padding: 5vw;
+            padding: 15px;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -75,9 +75,9 @@
 
         .close-menu {
             position: fixed;
-            top: 5vw;
-            left: 5vw;
-            font-size: 5vw;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
             color: white;
             cursor: pointer;
             z-index: 101;
@@ -89,7 +89,7 @@
         }
 
         .content {
-            padding: 5vw;
+            padding: 40px;
             margin-left: 0;
             max-width: 100%;
             margin: 0 auto;
@@ -98,20 +98,20 @@
         }
 
         h1 {
-            font-size: 7vw;
+            font-size: 2.5rem;
             color: #D32F2F;
-            margin-bottom: 5vw;
+            margin-bottom: 20px;
         }
 
         h2, h3 {
             color: #D32F2F;
-            margin-bottom: 3vw;
+            margin-bottom: 15px;
         }
 
         p {
             line-height: 1.6;
-            font-size: 4vw;
-            margin-bottom: 5vw;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             color: inherit;
             max-width: 90%;
             margin-left: auto;
@@ -122,9 +122,9 @@
 
         .theme-toggle {
             position: fixed;
-            top: 5vw;
-            right: 5vw;
-            font-size: 6vw;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
             cursor: pointer;
             z-index: 101;
             color: inherit;
@@ -139,90 +139,44 @@
             color: #FFCDD2;
         }
 
-        footer {
-            width: 100%;
-            padding: 5vw 0;
-            text-align: center;
-            font-size: 3vw;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            position: relative;
-            box-sizing: border-box;
-        }
-
         .footer span {
             font-weight: 600;
         }
 
-        /* Медиазапросы для адаптации на мобильных устройствах */
+        /* Адаптивный дизайн для мобильных устройств */
         @media (max-width: 768px) {
-            .menu {
-                font-size: 8vw;
-            }
-
-            .menu-container {
-                width: 85vw;
-                padding-top: 8vw;
-            }
-
             h1 {
-                font-size: 10vw;
+                font-size: 2rem; /* Уменьшаем размер заголовка */
             }
 
             h2, h3 {
-                font-size: 6vw;
+                font-size: 1.5rem; /* Уменьшаем размер подзаголовков */
             }
 
             p {
-                font-size: 4.5vw;
-            }
-
-            footer {
-                font-size: 4vw;
-            }
-
-            .theme-toggle {
-                font-size: 6vw;
-            }
-        }
-
-        /* Медиазапросы для планшетов */
-        @media (max-width: 1024px) {
-            .menu {
-                font-size: 6vw;
+                font-size: 1rem; /* Уменьшаем размер текста */
             }
 
             .menu-container {
-                width: 70vw;
-                padding-top: 6vw;
-            }
-
-            h1 {
-                font-size: 8vw;
-            }
-
-            h2, h3 {
-                font-size: 5.5vw;
-            }
-
-            p {
-                font-size: 3.5vw;
-            }
-
-            footer {
-                font-size: 3.5vw;
+                width: 200px; /* Уменьшаем ширину меню на мобильных устройствах */
             }
 
             .theme-toggle {
-                font-size: 5.5vw;
+                font-size: 24px; /* Уменьшаем размер иконки */
+            }
+
+            footer {
+                font-size: 0.8rem; /* Уменьшаем размер шрифта футера */
             }
         }
 
+        /* Код и номера строк */
         pre {
             background-color: #ffe5e5;
-            padding: 2vw;
+            padding: 20px;
             border-radius: 8px;
             overflow-x: auto;
-            font-size: 3vw;
+            font-size: 1rem;
             color: inherit;
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -233,6 +187,8 @@
             font-family: 'Courier New', monospace;
             line-height: 1.5;
             text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .dark-theme pre {
@@ -348,73 +304,87 @@
         <p>&copy; 2025. Все права защищены. <span>Создано при поддержке 𝕄𝕒𝕣𝕤𝕙𝕒𝕝𝕝 𝕋𝕖𝕒𝕞</span></p>
     </footer>
 
+       <style>
+          /* Фон и выравнивание футера */
+            footer {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            box-sizing: border-box;
+       }
+
+       /* Светлая тема */
+       .light-theme footer {
+           background-color: #D32F2F; /* Синий для светлой темы */
+           color: white;
+       }
+
+       /* Темная тема */
+       .dark-theme footer {
+           background-color: #D32F2F; /* Синий для темной темы */
+           color: #FFCDD2; /* Светлый текст для темной темы */
+       }
+
+       /* Стиль для текста футера */
+       .footer span {
+           font-weight: 600;
+       }
+    </style>
+
     <script>
-    let isMenuOpen = false;
-    let isDarkTheme = localStorage.getItem('theme') === 'dark';
-
-    // Проверяем текущую тему и применяем её
-    if (isDarkTheme) {
-        document.body.classList.add('dark-theme');
-        document.body.classList.remove('light-theme');
-        document.getElementById('themeToggle').children[0].classList.remove('fa-sun');
-        document.getElementById('themeToggle').children[0].classList.add('fa-moon');
-    } else {
-        document.body.classList.add('light-theme');
-        document.body.classList.remove('dark-theme');
-        document.getElementById('themeToggle').children[0].classList.remove('fa-moon');
-        document.getElementById('themeToggle').children[0].classList.add('fa-sun');
-    }
-
-    // Функция для переключения меню
-    function toggleMenu() {
-        const menu = document.getElementById('menuContainer');
-        menu.classList.toggle('opened');
-        isMenuOpen = !isMenuOpen;
-    }
-
-    // Функция для переключения темы
-    function toggleTheme() {
-        const body = document.body;
-        const themeIcon = document.getElementById('themeToggle').children[0];
+        let isMenuOpen = false;
+        let isDarkTheme = localStorage.getItem('theme') === 'dark';
 
         if (isDarkTheme) {
-            body.classList.remove('dark-theme');
-            body.classList.add('light-theme');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-            localStorage.setItem('theme', 'light');
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-sun');
+            document.getElementById('themeToggle').children[0].classList.add('fa-moon');
         } else {
-            body.classList.remove('light-theme');
-            body.classList.add('dark-theme');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-            localStorage.setItem('theme', 'dark');
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+            document.getElementById('themeToggle').children[0].classList.remove('fa-moon');
+            document.getElementById('themeToggle').children[0].classList.add('fa-sun');
         }
 
-        isDarkTheme = !isDarkTheme;
-    }
+        function toggleMenu() {
+            const menu = document.getElementById('menuContainer');
+            menu.classList.toggle('opened');
+            isMenuOpen = !isMenuOpen;
+        }
 
-    // Функция для перехода на главную страницу
-    function goToHome() {
-        window.location.href = "index.html";
-    }
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeToggle').children[0];
 
-    // Функция для перехода к заданиям
-    function goToTask(taskId) {
-        window.location.href = "task" + taskId + ".html";
-    }
+            if (isDarkTheme) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
 
-    // Функция для отправки формы
-    document.getElementById('myForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Предотвращаем стандартное отправление формы
+            isDarkTheme = !isDarkTheme;
+        }
 
-        const name = document.getElementById('name').value;
-        const comment = document.getElementById('comment').value;
+        function goToHome() {
+            window.location.href = "index.html";
+        }
 
-        // Здесь можно добавить обработку данных (например, отправка на сервер)
-        alert(`Спасибо за ваш комментарий, ${name}!\nКомментарий: ${comment}`);
-    });
-</script>
+        function goToTask(taskId) {
+            window.location.href = "task" + taskId + ".html";
+        }
+    </script>
 
 </body>
 </html>
