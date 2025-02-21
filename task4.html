@@ -15,6 +15,7 @@
             flex-direction: column;
             min-height: 100vh;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
         }
 
         .light-theme {
@@ -211,11 +212,11 @@
             }
 
             .theme-toggle {
-                font-size: 25px;
+                font-size: 35px; /* Увеличиваем иконку темы */
             }
 
             .menu {
-                font-size: 25px;
+                font-size: 35px; /* Увеличиваем иконку меню */
             }
         }
 
@@ -249,56 +250,13 @@
             }
 
             .theme-toggle {
-                font-size: 22px;
+                font-size: 40px; /* Увеличиваем иконку темы */
             }
 
             .menu {
-                font-size: 22px;
+                font-size: 40px; /* Увеличиваем иконку меню */
             }
         }
-
-        /* Новые стили для формы */
-        form {
-            margin: 20px auto;
-            max-width: 600px;
-            text-align: left;
-            background-color: #ffe5e5;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            font-weight: 600;
-            color: inherit;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #D32F2F;
-            color: white;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #C2185B;
-        }
-
     </style>
 </head>
 <body class="light-theme">
@@ -341,16 +299,13 @@
         <pre class="line-numbers">
 <code>
 <span>// Создаем форму с полями</span>
-<form id="myForm">
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="comment">Комментарий:</label>
-    <textarea id="comment" name="comment" required></textarea>
-
-    <button type="submit">Отправить</button>
-</form>
-
+<span>form id="myForm"</span>
+<span>label for="name"Имя:/label</span>
+<span>input type="text" id="name" name="name" required</span>
+<span>label for="comment"Комментарий:/label</span>
+<span>textarea id="comment" name="comment" required/textarea</span>
+<span>button type="submit"Отправить/button</span>
+<span>/form</span>
 <span></span>
 <span>// Обработка данных формы с JavaScript</span>
 <span>document.getElementById('myForm').addEventListener('submit', function(event) {</span>
@@ -420,14 +375,8 @@
         function goToTask(taskId) {
             window.location.href = "task" + taskId + ".html";
         }
-
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const comment = document.getElementById('comment').value;
-            alert(`Спасибо за ваш комментарий, ${name}!\nКомментарий: ${comment}`);
-        });
     </script>
 </body>
 </html>
+
 
