@@ -50,6 +50,7 @@
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
             z-index: 100;
             padding-top: 60px;
+            overflow-x: hidden;
         }
 
         .menu-container.opened {
@@ -95,6 +96,7 @@
             margin: 0 auto;
             text-align: center;
             flex-grow: 1;
+            overflow-x: hidden;
         }
 
         h1 {
@@ -145,6 +147,10 @@
 
         /* Адаптивный дизайн для мобильных устройств */
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden; /* Убираем горизонтальную прокрутку на мобильных устройствах */
+            }
+            
             h1 {
                 font-size: 2rem; /* Уменьшаем размер заголовка */
             }
