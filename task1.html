@@ -356,25 +356,29 @@
         }
 
         function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('themeToggle').children[0];
+             const body = document.body;
+             const themeIcon = document.getElementById('themeToggle').children[0];
+             const menuIcon = document.getElementById('menuButton');
 
-            if (isDarkTheme) {
-                body.classList.remove('dark-theme');
-                body.classList.add('light-theme');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.remove('light-theme');
-                body.classList.add('dark-theme');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'dark');
-            }
+             if (isDarkTheme) {
+                 body.classList.remove('dark-theme');
+                 body.classList.add('light-theme');
+                 themeIcon.classList.remove('fa-moon');
+                 themeIcon.classList.add('fa-sun');
+                 menuIcon.style.color = '#00796b'; // Зеленый цвет для светлой темы
+                 localStorage.setItem('theme', 'light');
+             } else {
+                 body.classList.remove('light-theme');
+                 body.classList.add('dark-theme');
+                 themeIcon.classList.remove('fa-sun');
+                 themeIcon.classList.add('fa-moon');
+                 menuIcon.style.color = '#c8e6c9'; // Цвет для темной темы
+                 localStorage.setItem('theme', 'dark');
+             }
 
-            isDarkTheme = !isDarkTheme;
-        }
+             isDarkTheme = !isDarkTheme;
+       }
+
 
         function goToHome() {
             window.location.href = "index.html";;
